@@ -1,7 +1,7 @@
 {
   "name": "burak",
   "version": "1.0.0",
-  "description": "This is burak project backend Jonny ",
+  "description": "This is burak project backend Jonny 0430",
   "main": "src/server.ts",
   "scripts": {
     "start": "ts-node src/server.ts",
