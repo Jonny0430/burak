@@ -32,4 +32,5 @@
    class => PASCAL
    folder => KEBAB
    css => SNAK
+   -Error handling
 */ 
