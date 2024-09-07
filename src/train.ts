@@ -17,12 +17,19 @@
 
 // shunday function tuzing, u integerlardan iborat arrayni argument sifatida qabul qilib, faqat positive qiymatlarni olib string holatda return qilsin
 // MASALAN: getPositive([1, -4, 2]) return qiladi "12"
-function getPositive(arr: number[]): string {
-    // Filter the array to keep only positive numbers and join them into a string
-    return arr.filter(num => num > 0).join('');
-}
+// function getPositive(arr: number[]): string {
+//     // Filter the array to keep only positive numbers and join them into a string
+//     return arr.filter(num => num > 0).join('');
+// }
 
-// Example usage:
-console.log(getPositive([1, -4, 2])); // Output: "12"
+// // Example usage:
+// console.log(getPositive([1, -4, 2])); // Output: "12"
 
-
+/* Project Standards:
+- Logging standards:
+-Naming standards:
+   function, method,variable => CEMAL
+   class => PASCAL
+   folder => KEBAB
+   css => SNAK
+*/ 
