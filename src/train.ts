@@ -40,9 +40,12 @@
 // Shunday function tuzing, unga string argument pass bolsin. Function ushbu agrumentdagi digitlarni yangi stringda return qilsin
 // MASALAN: getDigits("m14i1t") return qiladi "141"
 
-function getDigits(input: string): string {
-    return input.replace(/\D/g, '');
-}
+// function getDigits(input: string): string {
+//     return input.replace(/\D/g, '');
+// }
 
-console.log(getDigits("m14i1t")); 
+// console.log(getDigits("m14i1t")); 
 
+// Traditinal API 
+// Rest API 
+// GraphQl API 
