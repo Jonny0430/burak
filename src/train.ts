@@ -17,6 +17,7 @@
 
 // shunday function tuzing, u integerlardan iborat arrayni argument sifatida qabul qilib, faqat positive qiymatlarni olib string holatda return qilsin
 // MASALAN: getPositive([1, -4, 2]) return qiladi "12"
+
 // function getPositive(arr: number[]): string {
 //     // Filter the array to keep only positive numbers and join them into a string
 //     return arr.filter(num => num > 0).join('');
@@ -49,3 +50,29 @@
 // Traditinal API 
 // Rest API 
 // GraphQl API 
+
+// I-TASK:
+
+// Shunday function yozing, u parametridagi array ichida eng kop takrorlangan raqamni topib qaytarsin.
+// MASALAN: majorityElement([1,2,3,4,5,4,3,4]) return 4
+
+function majorityElement(nums: number[]): number | null {
+   let counts = new Map<number, number>();
+   let majority = null;
+   let maxCount = 0;
+
+   nums.forEach(num => {
+       let count = (counts.get(num) || 0) + 1;
+       counts.set(num, count);
+
+       if (count > maxCount) {
+           maxCount = count;
+           majority = num;
+       }
+   });
+
+   return majority;
+}
+
+// Example usage:
+console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4])); 
