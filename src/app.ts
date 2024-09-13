@@ -19,7 +19,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 //** 4-ROUTRES **/
-app.use("/admin", routerAdmin);
-app.use("/", router);
+app.use("/admin", routerAdmin); //ssr
+app.use("/", router); //spa
 
 export default app;

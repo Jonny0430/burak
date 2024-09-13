@@ -76,3 +76,14 @@ function majorityElement(nums: number[]): number | null {
 
 // Example usage:
 console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4])); 
+
+//UNAUTHORIZED 3 ga bolinadi
+//Sessions : (Cookies),
+//Tokens : (Cookies),
+//Tokens : (Headers)
+
+
+// Bravzurni 3xil xotirasi mavjud
+// 1.Local Storage
+// 2.Sessions.Storage
+// 3.Cookie
