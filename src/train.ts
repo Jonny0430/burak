@@ -56,26 +56,26 @@
 // Shunday function yozing, u parametridagi array ichida eng kop takrorlangan raqamni topib qaytarsin.
 // MASALAN: majorityElement([1,2,3,4,5,4,3,4]) return 4
 
-function majorityElement(nums: number[]): number | null {
-   let counts = new Map<number, number>();
-   let majority = null;
-   let maxCount = 0;
+// function majorityElement(nums: number[]): number | null {
+//    let counts = new Map<number, number>();
+//    let majority = null;
+//    let maxCount = 0;
 
-   nums.forEach(num => {
-       let count = (counts.get(num) || 0) + 1;
-       counts.set(num, count);
+//    nums.forEach(num => {
+//        let count = (counts.get(num) || 0) + 1;
+//        counts.set(num, count);
 
-       if (count > maxCount) {
-           maxCount = count;
-           majority = num;
-       }
-   });
+//        if (count > maxCount) {
+//            maxCount = count;
+//            majority = num;
+//        }
+//    });
 
-   return majority;
-}
+//    return majority;
+// }
 
-// Example usage:
-console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4])); 
+// // Example usage:
+// console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4])); 
 
 //UNAUTHORIZED 3 ga bolinadi
 //Sessions : (Cookies),
@@ -87,3 +87,24 @@ console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4]));
 // 1.Local Storage
 // 2.Sessions.Storage
 // 3.Cookie
+
+// Traditional FD => SSR => EJS
+// Modern FD => SPA => REACT
+
+// J-TASK: 
+
+// Shunday function yozing, u string qabul qilsin va string ichidagi eng uzun sozni qaytarsin.
+// MASALAN: findLongestWord("I come from Uzbekistan") return "Uzbekistan"
+
+function findLongestWord(text: string) {
+    return text
+        .split(/\s+/g)
+        .reduce(function (record, word) {
+            if (word.length > record.length) {
+                record = word;
+            }
+            return record;
+        }, '');
+}
+
+console.log(findLongestWord("I come from Uzbekistan"));
