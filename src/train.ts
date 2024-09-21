@@ -134,3 +134,23 @@ return count;
 };
 
 console.log(countVowels("string"));
+
+// function countVowels(input: string): number {
+//     // Unli harflar ro'yxati
+//     const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+//     let count = 0;
+
+//     // Har bir harfni tekshirib chiqish
+//     for (let char of input) {
+//         if (vowels.includes(char)) {
+//             count++;
+//         }
+//     }
+
+//     return count;
+// }
+
+// // Funksiyani sinab ko'rish
+// console.log(countVowels("string")); // Natija: 1
+// console.log(countVowels("Typescript")); // Natija: 3
+// console.log(countVowels("Uzbekistan")); // Natija: 4
