@@ -121,19 +121,19 @@
 //   Shunday function yozing, u string qabul qilsin va string ichidagi unli harflar sonini qaytarsin.
 //   MASALAN: countVowels("string") return 1;
 
-function countVowels(input: string): number {
-    const vowels  = ['a', 'e', 'i', 'o'];
-    let count = 0;
+// function countVowels(input: string): number {
+//     const vowels  = ['a', 'e', 'i', 'o'];
+//     let count = 0;
    
-    for (let length of input) {
-        if (vowels.includes(length)) {
-            count++;
-        }
-    }
-return count;
-};
+//     for (let length of input) {
+//         if (vowels.includes(length)) {
+//             count++;
+//         }
+//     }
+// return count;
+// };
 
-console.log(countVowels("string"));
+// console.log(countVowels("string"));
 
 // function countVowels(input: string): number {
 //     // Unli harflar ro'yxati
@@ -154,3 +154,23 @@ console.log(countVowels("string"));
 // console.log(countVowels("string")); // Natija: 1
 // console.log(countVowels("Typescript")); // Natija: 3
 // console.log(countVowels("Uzbekistan")); // Natija: 4
+
+
+// L-TASK: 
+
+// Shunday function yozing, u string qabul qilsin va string
+//  ichidagi hamma sozlarni chappasiga yozib va sozlar ketma-ketligini
+//   buzmasdan stringni qaytarsin.
+// MASALAN: reverseSentence("we like coding!") return "ew ekil gnidoc";
+
+function reverseSentence(sentence: string): string {
+    return sentence
+      .split(' ')                // Gapni so'zlarga ajratadi
+      .map(word =>               // Har bir so'z uchun
+        word.split('').reverse().join('') // So'zni harflar bo'yicha chappa qilib
+      ).join(' ');               // So'zlarni yana gapga birlashtiradi
+  }
+  
+  // Namuna chaqiruv
+  console.log(reverseSentence("we like coding!")); // "ew ekil gnidoc!"
+  
