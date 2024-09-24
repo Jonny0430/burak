@@ -8,7 +8,7 @@ export enum ProductSize {
 export enum ProductVolume {
     HALF = 0.5,
     ONE = 1,
-    ONE_POINT_TOW = 1.2,
+    ONE_POINT_TWO = 1.2,
     ONE_POINT_FIVE = 1.5,
     TOW = 2,
 }
@@ -19,7 +19,7 @@ export enum ProductStatus {
     DELETE = "DELETE",
 }
 
-export enum productCollection {
+export enum ProductCollection {
     DISH = "DISH",
     SALAD = "SALAD",
     DESSERT = "DESSERT",

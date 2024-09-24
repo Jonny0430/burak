@@ -1,64 +1,71 @@
-import mongoose, { Schema  } from "mongoose";
-import { productCollection,ProductSize,ProductStatus, ProductVolume } from "../libs/enums/product.enum";
-
-
+import mongoose, { Schema } from "mongoose";
+import {
+  ProductCollection,
+  ProductSize,
+  ProductStatus,
+  ProductVolume,
+} from "../libs/enums/product.enum";
 
 const productSchema = new Schema(
-    {
-      ProductStatus: {
-        type: String,
-        enum: ProductStatus,
-        default: ProductStatus.PAUSE,
-      },
+  {
+    productStatus: {
+      type: String,
+      enum: ProductStatus,
+      default: ProductStatus.PAUSE,
+    },
 
-      productCollection: {
-        type: String,
-        enum: productCollection,
-        required: true,
-      },
+    productCollection: {
+      type: String,
+      enum: ProductCollection,
+      required: true,
+    },
 
     productName: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
 
     productPrice: {
-        type: Number,
-        required: true,
+      type: Number,
+      required: true,
     },
 
-    ProductSize: {
-        type: String,
-        enum: ProductSize,
-        default: ProductSize.NORMAL,
+    productLeftCount: {
+      type: Number,
+      required: true,
     },
 
-    ProductVolume: {
-        type: String,
-        enum: ProductVolume,
-        default: ProductVolume.ONE,
+    productSize: {
+      type: String,
+      enum: ProductSize,
+      default: ProductSize.NORMAL,
+    },
+
+    productVolume: {
+      type: Number,
+      enum: ProductVolume,
+      default: ProductVolume.ONE,
     },
 
     productDesc: {
-        type: String,
-        required: true,
+      type: String,
     },
-
     productImages: {
-        type: [String],
-        default: [],
+      type: [String],
+      default: [],
     },
 
-    productViews: {type: Number,
-        default: 0,
-    }
+    productViews: {
+      type: Number,
+      default: 0,
     },
-{ timestamps: true }
+  },
+  { timestamps: true } //updatedAt, createdAt
 );
 
 productSchema.index(
-    { ProductName: 1, ProductSize: 1, ProductVolume: 1},
-    { unique: true }
+  { productName: 1, productSize: 1, ProductVolume: 1 },
+  { unique: true }
 );
 
-export default mongoose.model('Product',productSchema);
+export default mongoose.model("Product", productSchema);
