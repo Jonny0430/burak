@@ -13,7 +13,7 @@ routerAdmin
 .get("/signup", restaurantController.getSignup)
 .post(
     "/signup",
-    restaurantController.verifyRestaurant,
+    // restaurantController.verifyRestaurant,
     makeUploader("membres").single("memberImage"),
      restaurantController.processSignup
     );
