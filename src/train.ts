@@ -163,14 +163,45 @@
 //   buzmasdan stringni qaytarsin.
 // MASALAN: reverseSentence("we like coding!") return "ew ekil gnidoc";
 
-function reverseSentence(sentence: string): string {
-    return sentence
-      .split(' ')                // Gapni so'zlarga ajratadi
-      .map(word =>               // Har bir so'z uchun
-        word.split('').reverse().join('') // So'zni harflar bo'yicha chappa qilib
-      ).join(' ');               // So'zlarni yana gapga birlashtiradi
-  }
+// function reverseSentence(sentence: string): string {
+//     return sentence
+//       .split(' ')                // Gapni so'zlarga ajratadi
+//       .map(word =>               // Har bir so'z uchun
+//         word.split('').reverse().join('') // So'zni harflar bo'yicha chappa qilib
+//       ).join(' ');               // So'zlarni yana gapga birlashtiradi
+//   }
   
-  // Namuna chaqiruv
-  console.log(reverseSentence("we like coding!")); // "ew ekil gnidoc!"
+//   // Namuna chaqiruv
+//   console.log(reverseSentence("we like coding!")); // "ew ekil gnidoc!"
+
+// Raqamlar uchun ob'ektning turini belgilash
+type NumberSquare = {
+  number: number;  // Raqam
+  square: number;  // Raqamning kvadrati
+};
+
+// Funksiya: raqamlardan iborat array qabul qiladi va ularni ob'ektlar arrayiga aylantiradi
+function getSquareNumbers(numbers: number[]): NumberSquare[] {
+  // Natija uchun bo'sh array yaratamiz
+  let result: NumberSquare[] = [];
+
+  // Har bir raqamni ko'rib chiqamiz
+  for (let i = 0; i < numbers.length; i++) {
+      let num = numbers[i];  // Raqamni olish
+      let square = num * num; // Raqamning kvadratini hisoblash
+
+      // Ob'ektni natijaga qo'shamiz
+      result.push({
+          number: num,
+          square: square
+      });
+  }
+
+  return result; // Natijani qaytarish
+}
+
+// Funksiyani chaqirish va natijani ko'rsatish
+const result = getSquareNumbers([1, 2, 3]);
+console.log(result); // [{number: 1, square: 1}, {number: 2, square: 4}, {number: 3, square: 9}]
+
   
