@@ -175,33 +175,52 @@
 //   console.log(reverseSentence("we like coding!")); // "ew ekil gnidoc!"
 
 // Raqamlar uchun ob'ektning turini belgilash
-type NumberSquare = {
-  number: number;  // Raqam
-  square: number;  // Raqamning kvadrati
-};
+// type NumberSquare = {
+//   number: number;  // Raqam
+//   square: number;  // Raqamning kvadrati
+// };
 
-// Funksiya: raqamlardan iborat array qabul qiladi va ularni ob'ektlar arrayiga aylantiradi
-function getSquareNumbers(numbers: number[]): NumberSquare[] {
-  // Natija uchun bo'sh array yaratamiz
-  let result: NumberSquare[] = [];
+// // Funksiya: raqamlardan iborat array qabul qiladi va ularni ob'ektlar arrayiga aylantiradi
+// function getSquareNumbers(numbers: number[]): NumberSquare[] {
+//   // Natija uchun bo'sh array yaratamiz
+//   let result: NumberSquare[] = [];
 
-  // Har bir raqamni ko'rib chiqamiz
-  for (let i = 0; i < numbers.length; i++) {
-      let num = numbers[i];  // Raqamni olish
-      let square = num * num; // Raqamning kvadratini hisoblash
+//   // Har bir raqamni ko'rib chiqamiz
+//   for (let i = 0; i < numbers.length; i++) {
+//       let num = numbers[i];  // Raqamni olish
+//       let square = num * num; // Raqamning kvadratini hisoblash
 
-      // Ob'ektni natijaga qo'shamiz
-      result.push({
-          number: num,
-          square: square
-      });
+//       // Ob'ektni natijaga qo'shamiz
+//       result.push({
+//           number: num,
+//           square: square
+//       });
+//   }
+
+//   return result; // Natijani qaytarish
+// }
+
+// // Funksiyani chaqirish va natijani ko'rsatish
+// const result = getSquareNumbers([1, 2, 3]);
+// console.log(result); // [{number: 1, square: 1}, {number: 2, square: 4}, {number: 3, square: 9}]
+
+// N-TASK: 
+
+// Shunday function yozing, u string qabul qilsin va string palindrom yani togri oqilganda ham, orqasidan oqilganda ham bir hil oqiladigan soz ekanligini aniqlab boolean qiymat qaytarsin.
+// MASALAN: palindromCheck("dad") return true;  palindromCheck("son") return false;
+
+function palindromCheck(s: string): boolean {
+  // Stringni teskari qilib olamiz
+  let reverseString: string = s.split('').reverse().join('');
+  
+  // Asl string va teskari stringni solishtiramiz
+  if (s === reverseString) {
+      return true;  // Agar teng bo‘lsa, palindrom
+  } else {
+      return false; // Agar teng bo‘lmasa, palindrom emas
   }
-
-  return result; // Natijani qaytarish
 }
 
-// Funksiyani chaqirish va natijani ko'rsatish
-const result = getSquareNumbers([1, 2, 3]);
-console.log(result); // [{number: 1, square: 1}, {number: 2, square: 4}, {number: 3, square: 9}]
-
-  
+// Masalan:
+console.log(palindromCheck("dad"));  // true
+console.log(palindromCheck("son"));  // false
