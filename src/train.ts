@@ -209,18 +209,33 @@
 // Shunday function yozing, u string qabul qilsin va string palindrom yani togri oqilganda ham, orqasidan oqilganda ham bir hil oqiladigan soz ekanligini aniqlab boolean qiymat qaytarsin.
 // MASALAN: palindromCheck("dad") return true;  palindromCheck("son") return false;
 
-function palindromCheck(s: string): boolean {
-  // Stringni teskari qilib olamiz
-  let reverseString: string = s.split('').reverse().join('');
+// function palindromCheck(s: string): boolean {
+//   // Stringni teskari qilib olamiz
+//   let reverseString: string = s.split('').reverse().join('');
   
-  // Asl string va teskari stringni solishtiramiz
-  if (s === reverseString) {
-      return true;  // Agar teng bo‘lsa, palindrom
-  } else {
-      return false; // Agar teng bo‘lmasa, palindrom emas
-  }
-}
+//   // Asl string va teskari stringni solishtiramiz
+//   if (s === reverseString) {
+//       return true;  // Agar teng bo‘lsa, palindrom
+//   } else {
+//       return false; // Agar teng bo‘lmasa, palindrom emas
+//   }
+// }
 
 // Masalan:
-console.log(palindromCheck("dad"));  // true
-console.log(palindromCheck("son"));  // false
+// console.log(palindromCheck("dad"));  // true
+// console.log(palindromCheck("son"));  // false
+
+
+function calculateSumOfNumbers(arr: string | any[]) {
+  let sum = 0; 
+  for (let i = 0; i < arr.length; i++) {
+
+    if (typeof arr[i] === 'number') {
+      sum += arr[i];
+    }
+  }
+
+  return sum; 
+}
+
+console.log(calculateSumOfNumbers([10, "10", {son: 10}, true, 35])); // 45
