@@ -226,16 +226,42 @@
 // console.log(palindromCheck("son"));  // false
 
 
-function calculateSumOfNumbers(arr: string | any[]) {
-  let sum = 0; 
-  for (let i = 0; i < arr.length; i++) {
+// function calculateSumOfNumbers(arr: string | any[]) {
+//   let sum = 0; 
+//   for (let i = 0; i < arr.length; i++) {
 
-    if (typeof arr[i] === 'number') {
-      sum += arr[i];
-    }
+//     if (typeof arr[i] === 'number') {
+//       sum += arr[i];
+//     }
+//   }
+
+//   return sum; 
+// }
+
+// console.log(calculateSumOfNumbers([10, "10", {son: 10}, true, 35])); // 45
+
+
+// P-TASK:
+
+// Shunday function yozing, u object qabul qilsin va arrayni object arrayga otkazib arrayni qaytarsin qaytarsin.
+// MASALAN: objectToArray( {a: 10, b: 20}) return [['a', 10], ['b', 20]]
+
+
+function objectToArray(obj: any): any[] {
+  // Bo'sh array yaratamiz
+  let result = [];
+
+  // For-in tsikli orqali objectning barcha kalitlarini ko'ramiz
+  for (let key in obj) {
+    // Har bir kalit va uning qiymatini kichik massivga joylaymiz
+    result.push([key, obj[key]]);
   }
 
-  return sum; 
+  // Natijani qaytaramiz
+  return result;
 }
 
-console.log(calculateSumOfNumbers([10, "10", {son: 10}, true, 35])); // 45
+// Funksiyani test qilamiz
+const result = objectToArray({ a: 10, b: 20 });
+console.log(result); // [['a', 10], ['b', 20]]
+
