@@ -247,21 +247,38 @@
 // MASALAN: objectToArray( {a: 10, b: 20}) return [['a', 10], ['b', 20]]
 
 
-function objectToArray(obj: any): any[] {
-  // Bo'sh array yaratamiz
-  let result = [];
+// function objectToArray(obj: any): any[] {
+//   // Bo'sh array yaratamiz
+//   let result = [];
 
-  // For-in tsikli orqali objectning barcha kalitlarini ko'ramiz
-  for (let key in obj) {
-    // Har bir kalit va uning qiymatini kichik massivga joylaymiz
-    result.push([key, obj[key]]);
+//   // For-in tsikli orqali objectning barcha kalitlarini ko'ramiz
+//   for (let key in obj) {
+//     // Har bir kalit va uning qiymatini kichik massivga joylaymiz
+//     result.push([key, obj[key]]);
+//   }
+
+//   // Natijani qaytaramiz
+//   return result;
+// }
+
+// // Funksiyani test qilamiz
+// const result = objectToArray({ a: 10, b: 20 });
+// console.log(result); // [['a', 10], ['b', 20]]
+
+// Q-TASK:
+
+// Shunday function yozing, u 2 ta parametrgga ega bolib birinchisi object, ikkinchisi string. Agar string parametr objectni propertysi bolsa true bolmasa false qaytarsin.
+// MASALAN: hasProperty({name: "BMW", model: "M3"}, "model") return true; hasProperty({name: "BMW", model: "M3"}, "year") return false
+
+function hasProperty(obj: Record<string, any>, prop: string): boolean {
+  // Agar obyekt prop degan xususiyatga ega bo'lsa, true qaytaramiz
+  if (obj[prop] !== undefined) {
+    return true;
+  } else {
+    return false;
   }
-
-  // Natijani qaytaramiz
-  return result;
 }
 
-// Funksiyani test qilamiz
-const result = objectToArray({ a: 10, b: 20 });
-console.log(result); // [['a', 10], ['b', 20]]
-
+// Masalan:
+console.log(hasProperty({name: "BMW", model: "M3"}, "model")); // true
+console.log(hasProperty({name: "BMW", model: "M3"}, "year"));  // false
