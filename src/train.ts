@@ -267,18 +267,34 @@
 
 // Q-TASK:
 
-// Shunday function yozing, u 2 ta parametrgga ega bolib birinchisi object, ikkinchisi string. Agar string parametr objectni propertysi bolsa true bolmasa false qaytarsin.
+// Shunday function yozing, u 2 ta parametrgga ega bolib birinchisi object, ikkinchisi string.
+//  Agar string parametr objectni propertysi bolsa true bolmasa false qaytarsin.
 // MASALAN: hasProperty({name: "BMW", model: "M3"}, "model") return true; hasProperty({name: "BMW", model: "M3"}, "year") return false
 
-function hasProperty(obj: Record<string, any>, prop: string): boolean {
-  // Agar obyekt prop degan xususiyatga ega bo'lsa, true qaytaramiz
-  if (obj[prop] !== undefined) {
-    return true;
-  } else {
-    return false;
-  }
+// function hasProperty(obj: Record<string, any>, prop: string): boolean {
+//   // Agar obyekt prop degan xususiyatga ega bo'lsa, true qaytaramiz
+//   if (obj[prop] !== undefined) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+// // Masalan:
+// console.log(hasProperty({name: "BMW", model: "M3"}, "model")); // true
+// console.log(hasProperty({name: "BMW", model: "M3"}, "year"));  // false
+
+// R-TASK:
+
+// Shunday function yozing, u string parametrga ega bolsin. String "1+2" holatda pass qilinganda string ichidagi sonlar yigindisini number holatda qaytarsin.
+// MASALAN: calculate("1+3") return 4;
+
+function calculate(expression: string): number {
+  // String ichidagi sonlarni va amallarni ajratish uchun eval metodidan foydalanamiz
+  const result = eval(expression);
+  return result;
 }
 
-// Masalan:
-console.log(hasProperty({name: "BMW", model: "M3"}, "model")); // true
-console.log(hasProperty({name: "BMW", model: "M3"}, "year"));  // false
+// Misol uchun chaqirish
+const sum = calculate("1+3");
+console.log(sum); // 4
