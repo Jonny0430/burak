@@ -289,12 +289,33 @@
 // Shunday function yozing, u string parametrga ega bolsin. String "1+2" holatda pass qilinganda string ichidagi sonlar yigindisini number holatda qaytarsin.
 // MASALAN: calculate("1+3") return 4;
 
-function calculate(expression: string): number {
-  // String ichidagi sonlarni va amallarni ajratish uchun eval metodidan foydalanamiz
-  const result = eval(expression);
-  return result;
+// function calculate(expression: string): number {
+//   // String ichidagi sonlarni va amallarni ajratish uchun eval metodidan foydalanamiz
+//   const result = eval(expression);
+//   return result;
+// }
+
+// // Misol uchun chaqirish
+// const sum = calculate("1+3");
+// console.log(sum); // 4
+
+// S-TASK:
+
+// Shunday function yozing, u numberlardan tashkil topgan array qabul qilsin va osha numberlar orasidagi tushib qolgan sonni topib uni return qilsin
+// MASALAN: missingNumber([3, 0, 1]) return 2
+
+function missingNumber(sonlar: number[]): number {
+    sonlar.sort((a, b) => a - b);
+    for (let i = 0; i < sonlar.length; i++) {
+        if (sonlar[i] !== i) {  
+            return i;
+        }
+    }
+
+    return sonlar.length;
 }
 
-// Misol uchun chaqirish
-const sum = calculate("1+3");
-console.log(sum); // 4
+// Masalan:
+console.log(missingNumber([3, 0, 1]));  // Natija: 2
+
+
