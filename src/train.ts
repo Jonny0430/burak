@@ -331,13 +331,37 @@
 // MASALAN: sumOdds(9) return 4; sumOdds(11) return 5;
 
 
-function sumOdds(number: number): number {
-    let count = 0;  // Toq sonlarni sanash uchun o'zgaruvchi
-    for (let i = 0; i <= number; i++) {  // 0 dan numbergacha barcha sonlarni ko'rib chiqamiz
-        if (i % 2 !== 0) {  // Agar son toq bo'lsa (2 ga bo'linmasa)
-            count++;  // Sanagichga 1 qo'shamiz
+// function sumOdds(number: number): number {
+//     let count = 0;  // Toq sonlarni sanash uchun o'zgaruvchi
+//     for (let i = 0; i <= number; i++) {  // 0 dan numbergacha barcha sonlarni ko'rib chiqamiz
+//         if (i % 2 !== 0) {  // Agar son toq bo'lsa (2 ga bo'linmasa)
+//             count++;  // Sanagichga 1 qo'shamiz
+//         }
+//     }
+//     return count;  // Natijani qaytaramiz
+// }
+
+
+// V-TASK:
+
+// Shunday function yozing, uni string parametri bolsin va stringdagi harf va u harf necha marta takrorlangani sonidan tashkil topgan object qaytarsin.
+// MASALAN: countChars("hello") return {h: 1, e: 1, l: 2, o: 1}
+function countChars(str: string): { [key: string]: number } {
+    const result: { [key: string]: number } = {};
+
+    for (let i = 0; i < str.length; i++) {
+        const char = str[i];
+        
+        if (result[char]) {
+            result[char]++;  // Agar harf oldin bor bo'lsa, uni sanog'ini oshiramiz
+        } else {
+            result[char] = 1;  // Agar harf yangi bo'lsa, sanog'ini 1 ga teng qilib qo'yamiz
         }
     }
-    return count;  // Natijani qaytaramiz
+
+    return result;
 }
+
+console.log(countChars("hello")); // {h: 1, e: 1, l: 2, o: 1}
+
 
