@@ -346,22 +346,45 @@
 
 // Shunday function yozing, uni string parametri bolsin va stringdagi harf va u harf necha marta takrorlangani sonidan tashkil topgan object qaytarsin.
 // MASALAN: countChars("hello") return {h: 1, e: 1, l: 2, o: 1}
-function countChars(str: string): { [key: string]: number } {
-    const result: { [key: string]: number } = {};
+// function countChars(str: string): { [key: string]: number } {
+//     const result: { [key: string]: number } = {};
 
-    for (let i = 0; i < str.length; i++) {
-        const char = str[i];
+//     for (let i = 0; i < str.length; i++) {
+//         const char = str[i];
         
-        if (result[char]) {
-            result[char]++;  // Agar harf oldin bor bo'lsa, uni sanog'ini oshiramiz
-        } else {
-            result[char] = 1;  // Agar harf yangi bo'lsa, sanog'ini 1 ga teng qilib qo'yamiz
-        }
+//         if (result[char]) {
+//             result[char]++;  // Agar harf oldin bor bo'lsa, uni sanog'ini oshiramiz
+//         } else {
+//             result[char] = 1;  // Agar harf yangi bo'lsa, sanog'ini 1 ga teng qilib qo'yamiz
+//         }
+//     }
+
+//     return result;
+// }
+
+// console.log(countChars("hello")); // {h: 1, e: 1, l: 2, o: 1}
+
+
+// W-TASK:
+
+// Shunday function yozing, uni array va number parametrlari bolsin. Function arrayni numberda berilgan uzunlikda kesib bolaklarga ajratilgan array holatida qaytarsin
+// MASALAN: chunkArray([1,2,3,4,5,6,7,8,9,10], 3) return [[1,2,3], [4,5,6], [7,8,9], [10]]
+
+function chunkArray(sonlar: number[], uzunlik: number): number[][] {
+    let natija: number[][] = [];  // Bo'laklarga ajratilgan arrayni saqlaymiz
+    let i = 0;
+
+    // Sonlar arrayini uzunlik bo'yicha bo'laklarga ajratamiz
+    while (i < sonlar.length) {
+        // Har bir bo'lakni kesib olamiz va natijaga qo'shamiz
+        let bolak = sonlar.slice(i, i + uzunlik);
+        natija.push(bolak);
+        i += uzunlik;  // Keyingi bo'lak uchun indexni yangilaymiz
     }
 
-    return result;
+    return natija;
 }
 
-console.log(countChars("hello")); // {h: 1, e: 1, l: 2, o: 1}
-
-
+// Masalan:
+console.log(chunkArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));  
+// Natija: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]]
