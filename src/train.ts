@@ -370,21 +370,66 @@
 // Shunday function yozing, uni array va number parametrlari bolsin. Function arrayni numberda berilgan uzunlikda kesib bolaklarga ajratilgan array holatida qaytarsin
 // MASALAN: chunkArray([1,2,3,4,5,6,7,8,9,10], 3) return [[1,2,3], [4,5,6], [7,8,9], [10]]
 
-function chunkArray(sonlar: number[], uzunlik: number): number[][] {
-    let natija: number[][] = [];  // Bo'laklarga ajratilgan arrayni saqlaymiz
-    let i = 0;
+// function chunkArray(sonlar: number[], uzunlik: number): number[][] {
+//     let natija: number[][] = [];  // Bo'laklarga ajratilgan arrayni saqlaymiz
+//     let i = 0;
 
-    // Sonlar arrayini uzunlik bo'yicha bo'laklarga ajratamiz
-    while (i < sonlar.length) {
-        // Har bir bo'lakni kesib olamiz va natijaga qo'shamiz
-        let bolak = sonlar.slice(i, i + uzunlik);
-        natija.push(bolak);
-        i += uzunlik;  // Keyingi bo'lak uchun indexni yangilaymiz
+//     // Sonlar arrayini uzunlik bo'yicha bo'laklarga ajratamiz
+//     while (i < sonlar.length) {
+//         // Har bir bo'lakni kesib olamiz va natijaga qo'shamiz
+//         let bolak = sonlar.slice(i, i + uzunlik);
+//         natija.push(bolak);
+//         i += uzunlik;  // Keyingi bo'lak uchun indexni yangilaymiz
+//     }
+
+//     return natija;
+// }
+
+// // Masalan:
+// console.log(chunkArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));  
+// Natija: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]]
+
+
+// TASK X
+
+// Shunday function yozing, uni object va string parametrlari bo'lsin.
+// Bu function, birinchi object parametri tarkibida, kalit sifatida ikkinchi string parametri
+// necha marotaba takrorlanganlini sanab qaytarsin.
+
+// Eslatma => Nested object'lar ham sanalsin
+
+// MASALAN: countOccurrences({model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}}, 'model') return 2
+
+// Yuqoridagi misolda, birinchi argument object, ikkinchi argument 'model'.
+// Funktsiya, shu ikkinchi argument 'model', birinchi argument object
+// tarkibida kalit sifatida 2 marotaba takrorlanganligi uchun 2 soni return qilmoqda
+
+function countOccurrences(obj: { [key: string]: any }, key: string): number {
+    let count = 0;  // kalitlarni sanash uchun
+
+    // har bir kalit-qiymat juftligini aylanib chiqamiz
+    for (let k in obj) {
+        if (k === key) {
+            count++;  // agar kalit qidirilayotgan kalitga teng bo'lsa, sanaymiz
+        }
+
+        // agar qiymat yana bir object bo'lsa, rekursiv chaqiramiz
+        if (typeof obj[k] === 'object' && obj[k] !== null) {
+            count += countOccurrences(obj[k], key);
+        }
     }
 
-    return natija;
+    return count;  // umumiy natijani qaytaramiz
 }
 
-// Masalan:
-console.log(chunkArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));  
-// Natija: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]]
+// Misol
+const obj = {
+    model: 'Bugatti',
+    steer: {
+        model: 'HANKOOK',
+        size: 30
+    }
+};
+
+const natija = countOccurrences(obj, 'model');
+console.log(natija);  // bu yerda natija 2 bo'lishi kerak
