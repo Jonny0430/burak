@@ -67,7 +67,7 @@ public async getProduct(
     //TODO: if authenticated users => bolsa => view logni xosil qilish kerek boladi
     
     if (memberId) {
-        //Check View Log Existence
+        //Check  Existence
         const input: ViewInput = {
             memberId: memberId,
             viewRefId: productId,
@@ -75,14 +75,24 @@ public async getProduct(
         };
         const existView = await this.viewService.checkViewExistence(input);
         
-        //Insert New View log 
-        console.log("existView:", existView);
+        //Insert View
+        console.log("exist:", !!existView);
         if (!existView) {
             console.log("PLANNING TO INSERT NEW VIEW");
             await this.viewService.insertMemberView(input);
+        // Increase Counts
+        result = await this.productModel
+        .findByIdAndUpdate(
+            productId,
+            { $inc: { productViews: +1 } },
+            { new: true }
+        )
+        .exec();
+
         }
     }
 
+    //1.00
     return result;
 }
 /** SSR */
