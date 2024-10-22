@@ -4,6 +4,8 @@ import Errors, { HttpCode, Message } from "../libs/Errors";
 import { Product, ProductInput, ProductInquiry, ProductUpdateInput } from "../libs/types/product";
 import ProductModel from "../schema/Product.model";//../schema/Product.model
 import { T } from "../libs/types/common";
+import {ObjectId} from "mongoose";
+import { Member } from "../libs/types/member";
 
 class ProductService {
     private readonly productModel;
@@ -42,6 +44,25 @@ public async getProducts(inquiry: ProductInquiry): Promise<Product[]> {
     return result;
 }
 
+public async getProduct(
+    memberId: ObjectId | null,
+    id: string
+): Promise<Product> {
+    const productId = shapeIntoMongooseObjectId(id);
+
+    let result = await this.productModel
+    .findOne({
+        _id: productId,
+        productStatus: ProductStatus.PROCESS,
+    })
+
+    .exec();
+    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+
+    //TODO: if authenticated users => bolsa => view logni xosil qilish kerek boladi
+    
+    return result;
+}
 /** SSR */
 
 public async getAllProducts(): Promise<Product[]> {
