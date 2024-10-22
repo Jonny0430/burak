@@ -6,12 +6,17 @@ import ProductModel from "../schema/Product.model";
 import { T } from "../libs/types/common";
 import {ObjectId} from "mongoose";
 import { Member } from "../libs/types/member";
+import ViewService from "./View.service";
+import { ViewInput } from "../libs/types/view";
+import { ViewGroup } from "../libs/enums/view.enum";
 
 class ProductService {
     private readonly productModel;
+    public viewService;
      
     constructor() {
         this.productModel = ProductModel;
+        this.viewService = new ViewService()
     }
 
 
@@ -61,6 +66,23 @@ public async getProduct(
 
     //TODO: if authenticated users => bolsa => view logni xosil qilish kerek boladi
     
+    if (memberId) {
+        //Check View Log Existence
+        const input: ViewInput = {
+            memberId: memberId,
+            viewRefId: productId,
+            viewGroup: ViewGroup.PRODUCT,
+        };
+        const existView = await this.viewService.checkViewExistence(input);
+        
+        //Insert New View log 
+        console.log("existView:", existView);
+        if (!existView) {
+            console.log("PLANNING TO INSERT NEW VIEW");
+            await this.viewService.insertMemberView(input);
+        }
+    }
+
     return result;
 }
 /** SSR */
