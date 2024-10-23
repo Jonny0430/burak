@@ -15,7 +15,6 @@ const productController: T = {};
 productController.getProducts = async (req: Request, res: Response) => {
     try {
         console.log("getProducts");
-        console.log("req.query:", req.query);
         const { page, limit, order, productCollection, search } = req.query;  
         const inquiry: ProductInquiry = {
             order: String(order),
