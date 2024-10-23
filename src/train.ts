@@ -404,32 +404,54 @@
 // Funktsiya, shu ikkinchi argument 'model', birinchi argument object
 // tarkibida kalit sifatida 2 marotaba takrorlanganligi uchun 2 soni return qilmoqda
 
-function countOccurrences(obj: { [key: string]: any }, key: string): number {
-    let count = 0;  // kalitlarni sanash uchun
+// function countOccurrences(obj: { [key: string]: any }, key: string): number {
+//     let count = 0;  // kalitlarni sanash uchun
 
-    // har bir kalit-qiymat juftligini aylanib chiqamiz
-    for (let k in obj) {
-        if (k === key) {
-            count++;  // agar kalit qidirilayotgan kalitga teng bo'lsa, sanaymiz
-        }
+//     // har bir kalit-qiymat juftligini aylanib chiqamiz
+//     for (let k in obj) {
+//         if (k === key) {
+//             count++;  // agar kalit qidirilayotgan kalitga teng bo'lsa, sanaymiz
+//         }
 
-        // agar qiymat yana bir object bo'lsa, rekursiv chaqiramiz
-        if (typeof obj[k] === 'object' && obj[k] !== null) {
-            count += countOccurrences(obj[k], key);
+//         // agar qiymat yana bir object bo'lsa, rekursiv chaqiramiz
+//         if (typeof obj[k] === 'object' && obj[k] !== null) {
+//             count += countOccurrences(obj[k], key);
+//         }
+//     }
+
+//     return count;  // umumiy natijani qaytaramiz
+// }
+
+// // Misol
+// const obj = {
+//     model: 'Bugatti',
+//     steer: {
+//         model: 'HANKOOK',
+//         size: 30
+//     }
+// };
+
+// const natija = countOccurrences(obj, 'model');
+// console.log(natija);  // bu yerda natija 2 bo'lishi kerak
+
+// Y-TASK:
+
+// Shunday function yozing, uni 2 ta array parapetri bolsin. Function ikkala arrayda ham ishtirok etgan qiymatlarni bir arrayda qaytarsin
+// MASALAN: findIntersection([1,2,3], [3,2,0]) return [2,3]
+//  mana shuni type scripda yozib ber
+
+function findIntersection(arr1: number[], arr2: number[]): number[] {
+    let result: number[] = [];
+
+    for (let i = 0; i < arr1.length; i++) {
+        if (arr2.indexOf(arr1[i]) !== -1) {
+            result.push(arr1[i]);
         }
     }
 
-    return count;  // umumiy natijani qaytaramiz
+    return result;
 }
 
-// Misol
-const obj = {
-    model: 'Bugatti',
-    steer: {
-        model: 'HANKOOK',
-        size: 30
-    }
-};
-
-const natija = countOccurrences(obj, 'model');
-console.log(natija);  // bu yerda natija 2 bo'lishi kerak
+// Misol:
+const result = findIntersection([1, 2, 3], [3, 2, 0]);
+console.log(result); // Natija: [2, 3]

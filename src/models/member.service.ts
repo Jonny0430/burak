@@ -95,9 +95,10 @@ public async getRestaurant(): Promise<Member> {
             memberPoints: { $gte: 1},
             
         })
-            .sort({ memberPoints: -1 })
+        .sort({ memberPoints: -1 })
         .limit(4)
         .exec();
+        
        if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
     
         return result;
