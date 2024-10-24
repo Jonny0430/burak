@@ -1,5 +1,6 @@
 import { ObjectId } from "mongoose";
 import { OrderStatus } from "../enums/order.enum";
+import { Product } from "./product";
 
 export interface OrderItem {
     _id: ObjectId;
@@ -22,6 +23,7 @@ export interface Order {
     updatedAt: Date;
     // from aggregations
     orderItems: OrderItem[];
+    productDate: Product[];
 }
 
 export interface OrderItemInput {
@@ -34,5 +36,10 @@ export interface OrderItemInput {
 export interface OrderInquiry {
     page: number;
     limit: number;
+    orderStatus: OrderStatus;
+}
+
+export interface OrderUpdateInput {
+    orderId: string;
     orderStatus: OrderStatus;
 }
