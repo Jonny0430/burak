@@ -50,4 +50,5 @@ app.set("view engine", "ejs");
 app.use("/admin", routerAdmin); //ssr
 app.use("/", router); //spa
 
+
 export default app;
